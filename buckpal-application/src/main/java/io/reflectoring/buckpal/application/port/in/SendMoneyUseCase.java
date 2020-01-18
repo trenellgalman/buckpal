@@ -34,6 +34,11 @@ public interface SendMoneyUseCase {
 			this.money = money;
 			this.validateSelf();
 		}
-	}
 
+
+		@Override
+		public Class<SendMoneyCommand> getType() {
+			return SendMoneyCommand.class;
+		}
+	}
 }

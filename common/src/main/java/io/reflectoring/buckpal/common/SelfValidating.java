@@ -21,9 +21,11 @@ public abstract class SelfValidating<T> {
    * instance.
    */
   protected void validateSelf() {
-    Set<ConstraintViolation<T>> violations = validator.validate((T) this);
+    Set<ConstraintViolation<T>> violations = validator.validate(getType().cast(this));
     if (!violations.isEmpty()) {
       throw new ConstraintViolationException(violations);
     }
   }
+
+  public abstract Class<T> getType();
 }
